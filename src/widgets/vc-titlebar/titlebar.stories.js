@@ -10,7 +10,7 @@ import { withKnobs, text } from '@storybook/addon-knobs';
 
 import VoiceTitleBar from './titlebar';
 
-storiesOf('Title Bar', module)
+storiesOf('Widget/Title Bar', module)
     .addDecorator(withKnobs)
     .add('simpel title bar', withInfo(`
       this is a test

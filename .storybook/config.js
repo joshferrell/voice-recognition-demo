@@ -1,5 +1,8 @@
 import { configure, setAddon } from '@storybook/react';
 import infoAddon, { setDefaults } from '@storybook/addon-info';
+import { initializeIcons } from '@uifabric/icons';
+
+initializeIcons();
 
 const req = require.context('../src', true, /\.stories\.js$/);
 const addonInfoDefaults = {

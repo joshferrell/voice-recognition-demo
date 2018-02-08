@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@uifabric/icons": "^5.4.2",
+    "office-ui-fabric-react": "^5.48.1",
     "prop-types": "^15.6.0",
     "react": "^16.2.0",
     "react-desktop": "^0.3.3",

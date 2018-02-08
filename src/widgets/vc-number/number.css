@@ -2,7 +2,7 @@
     display: inline-block;
 }
 
-.vc-number {
+.vc-number-container .vc-number {
     display: inline-flex;
     align-items: center;
     font-family: arial, helvetica, 'sans-serif';
@@ -12,7 +12,7 @@
     right: 15px;
     top: -10px;
 
-    color: white;
+    color: white !important;
     background-color: rgba(32, 45, 74, .8);
 
     border-radius: 100%;

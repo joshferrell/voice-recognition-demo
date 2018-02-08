@@ -11,7 +11,7 @@ import { withKnobs, text } from '@storybook/addon-knobs';
 
 import VCMasterDetailsViewItem from './item';
 
-storiesOf('Master Details View', module)
+storiesOf('Widget/Master Details View', module)
     .addDecorator(withKnobs)
     .add('with text', withInfo(`
       this is a test

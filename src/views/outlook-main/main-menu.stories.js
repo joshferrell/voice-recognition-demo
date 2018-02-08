@@ -3,17 +3,17 @@ import React from 'react';
 /* eslint-disable import/no-extraneous-dependencies */
 import { storiesOf } from '@storybook/react';
 import { withInfo } from '@storybook/addon-info';
-import { withKnobs, text } from '@storybook/addon-knobs';
 /* eslint-enable eslint-disable import/no-extraneous-dependencies */
 
-import VoiceNumber from './number';
+import MainMenu from './main-menu';
 
-storiesOf('Widget/Voice Number', module)
-    .addDecorator(withKnobs)
+const subject = {
+    subscribe: () => {}
+};
+
+storiesOf('View/Main Container', module)
     .add('voice computer number', withInfo(`
       this is a test
     `)(() => (
-        <VoiceNumber number={text('number', '2')}>
-            <button style={{ padding: '10px 20px' }}>test</button>
-        </VoiceNumber>
+        <MainMenu subject={subject} />
     )));

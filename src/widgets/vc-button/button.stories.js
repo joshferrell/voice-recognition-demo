@@ -8,7 +8,7 @@ import { withKnobs, text } from '@storybook/addon-knobs';
 
 import VoiceButton from './button';
 
-storiesOf('Button', module)
+storiesOf('Widget/Button', module)
     .addDecorator(withKnobs)
   .add('with text', withInfo(`
       this is a test
