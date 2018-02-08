@@ -10,7 +10,8 @@ export default class MainMenu extends Component {
 
         this.navItems = Array(3);
         this.state = {
-            selectedNav: 0
+            selectedNav: 0,
+            paneExpanded: false
         };
     }
 
@@ -20,19 +21,32 @@ export default class MainMenu extends Component {
         }
     }
 
+    togglePane = (event) => {
+        if (event.includes('click 4')) {
+            const target = document.querySelector('.vc-nav-pane > div > div:first-of-type > svg');
+            const evt = new MouseEvent('click', {
+                view: window,
+                bubbles: true
+            });
+
+            target.dispatchEvent(evt);
+        }
+    }
+
     makeSelectNav = index => () => {
         this.setState({ selectedNav: index });
     };
 
     render = () => {
         const { subject } = this.props;
+        subject.subscribe(this.togglePane);
 
         return (
             <Fabric>
                 <Window theme="light" chrome padding="12px">
                     <TitleBar title="Outlook" />
                     <div className="vc-nav-pane" style={{ width: '100%' }}>
-                        <NavPane openLength={200} theme="light" canPaneToggle={false}>
+                        <NavPane openLength={200} theme="light" defaultIsPaneExpanded={this.state.paneExpanded}>
                             <NavPaneItem
                                 title="New Mail"
                                 icon={

@@ -6,44 +6,35 @@
     overflow: visible !important;
 }
 
+.vc-nav-pane a > span > i {
+    width: 50px;
+    margin-top: 3px;
+}
+
 .vc-nav-pane .vc-number {
-    position: absolute;
-    right: -5px;
+    right: 0px;
+    top: -14px;
 }
 
-.vc-nav-pane a:first-of-type .vc-number {
-    top: 36px;
+.vc-nav-pane .vc-number-container > i {
+    padding-top: 5px;
 }
 
-.vc-nav-pane a:nth-of-type(2) .vc-number {
-    top: 83px;
-}
-/*
-.vc-nav-pane a:after,
-.vc-nav-pane svg:after {
+.vc-nav-pane > div > div:first-of-type > div:after {
     color: white;
     background-color: rgba(32, 45, 74, .8);
     border-radius: 100%;
-    padding: 14px 9px 2px;
+    padding: 7px 9px 6px;
     height: 11px;
     position: relative;
     font-family: arial, helvetica, 'san-serif';
-    top: -8px;
-    float: right;
-    right: -4px;
+    top: -4px;
+    right: -30px;
     font-size: .8rem;
     font-weight: bold;
     text-align: center;
 }
 
-.vc-nav-pane svg:after {
-    content: '1';
+.vc-nav-pane > div > div:first-of-type > div:after {
+    content: '4';
 }
-
-.vc-nav-pane a:first-of-type:after {
-    content: '1';
-}
-
-.vc-nav-pane a:nth-of-type(2):after {
-    content: '2';
-} */

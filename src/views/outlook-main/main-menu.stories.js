@@ -1,4 +1,5 @@
 import React from 'react';
+import { Subject } from 'rxjs';
 
 /* eslint-disable import/no-extraneous-dependencies */
 import { storiesOf } from '@storybook/react';
@@ -7,13 +8,19 @@ import { withInfo } from '@storybook/addon-info';
 
 import MainMenu from './main-menu';
 
-const subject = {
-    subscribe: () => {}
-};
-
 storiesOf('View/Main Container', module)
     .add('voice computer number', withInfo(`
       this is a test
-    `)(() => (
-        <MainMenu subject={subject} />
-    )));
+    `)(() => {
+        const subject$ = new Subject();
+
+        // test voice event using rxjs subscription
+        setTimeout(() => {
+            console.log('voice event: click 4');
+            subject$.next('click 4')
+        }, 3000);
+
+        return (
+            <MainMenu subject={subject$} />
+        );
+    }));
