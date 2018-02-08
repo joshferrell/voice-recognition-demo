@@ -1,0 +1,44 @@
+.email-card {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: flex-start;
+    justify-content: space-around;
+    line-height: normal;
+    padding: 8px 0;
+}
+
+.email-card p {
+    margin: 0;
+}
+
+.email-card .email-author {
+    order: -1;
+    font-size: 1.3rem;
+}
+
+.email-card h4 {
+    font-size: .9rem;
+    color: #0078d7;
+    margin: 4px 0;
+}
+
+.email-card .email-message {
+    font-size: .8rem;
+}
+
+.email-view {
+    width: 100%;
+    padding: 24px;
+    padding-top: 0;
+}
+
+.email-view .email-from {
+    margin-bottom: 8px;
+}
+
+.email-view hr {
+    margin-top: 16px;
+    border-color: #eaeaea;
+    opacity: .2;
+
+}

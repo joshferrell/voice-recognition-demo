@@ -1,60 +1,54 @@
-import React, { Component, Fragment } from 'react';
+import React from 'react';
 import { TitleBar } from 'react-desktop/windows';
 import './titlebar.css';
 
-class VoiceTitleBar extends Component {
-    constructor(props) {
-        super(props);
-        this.buttons = Array(3);
+const makeEventListener = index => (event) => {
+    if (event.includes(`click ${index + 1}`)) {
+        this.buttons[index].click();
     }
+};
 
-    makeEventListener = index => (event) => {
-        if (event.includes(`click ${index + 1}`)) {
-            this.buttons[index].click();
-        }
-    }
+const renderVoiceTitleBar = (
+    subject,
+    title,
+    options = {},
+    onCloseClick,
+    onMinimizeClick,
+    onMaximizeClick
+) => {
+    const buttons = Array(3);
 
-    hiddenButton = (index, action) => (
+    const hiddenButton = (index, action) => (
         <button
-            ref={(button) => { this.buttons[index] = button; }}
+            ref={(button) => { buttons[index] = button; }}
             style={{ display: 'none' }}
             onClick={action}
         />
-    )
+    );
 
-    render = () => {
-        const {
-            onCloseClick,
-            onMinimizeClick,
-            onMaximizeClick,
-            subject,
-            ...props
-        } = this.props;
+    const onMinimizeEvent = makeEventListener(0);
+    const onMaximizeEvent = makeEventListener(1);
+    const onCloseEvent = makeEventListener(2);
 
-        const onMinimizeEvent = this.makeEventListener(0);
-        const onMaximizeEvent = this.makeEventListener(1);
-        const onCloseEvent = this.makeEventListener(2);
+    subject.subscribe(onMinimizeEvent);
+    subject.subscribe(onMaximizeEvent);
+    subject.subscribe(onCloseEvent);
 
-        subject.subscribe(onMinimizeEvent);
-        subject.subscribe(onMaximizeEvent);
-        subject.subscribe(onCloseEvent);
+    return (
+        <TitleBar
+            onCloseClick={onCloseClick}
+            onMinimizeClick={onMinimizeClick}
+            onMaximizeClick={onMaximizeClick}
+            controls
+            title={title}
+            className="vc-titlebar"
+            {...options}
+        >
+            {onMinimizeClick && hiddenButton(0, onMinimizeClick)}
+            {onMaximizeClick && hiddenButton(1, onMaximizeClick)}
+            {onCloseClick && hiddenButton(2, onCloseClick)}
+        </TitleBar>
+    );
+};
 
-        return (
-            <div className="vc-titlebar">
-                {onMinimizeClick && this.hiddenButton(0, onMinimizeClick)}
-                {onMaximizeClick && this.hiddenButton(1, onMaximizeClick)}
-                {onCloseClick && this.hiddenButton(2, onCloseClick)}
-                <TitleBar
-                    onCloseClick={onCloseClick}
-                    onMinimizeClick={onMinimizeClick}
-                    onMaximizeClick={onMaximizeClick}
-                    background="#fafafa"
-                    color="#2b2b2b"
-                    {...props}
-                />
-            </div>
-        );
-    }
-}
-
-export default VoiceTitleBar;
+export default renderVoiceTitleBar;

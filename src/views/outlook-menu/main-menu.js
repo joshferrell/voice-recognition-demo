@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Fabric, Icon } from 'office-ui-fabric-react';
 import { Window, NavPane, NavPaneItem, TitleBar } from 'react-desktop/windows';
-import { VCTitleBar, VoiceNumber } from '../../widgets';
+import { renderVoiceTitleBar, VoiceNumber } from '../../widgets';
 import './main-menu.css';
 
 export default class MainMenu extends Component {
@@ -10,7 +10,7 @@ export default class MainMenu extends Component {
 
         this.navItems = Array(3);
         this.state = {
-            selectedNav: 0,
+            selectedNav: 1,
             paneExpanded: false
         };
     }
@@ -38,19 +38,25 @@ export default class MainMenu extends Component {
     };
 
     render = () => {
-        const { subject } = this.props;
+        const { subject, children } = this.props;
         subject.subscribe(this.togglePane);
+
+        const titleBarOptions = {
+            color: '#fff',
+            background: '#0073c7',
+            theme: 'dark'
+        };
 
         return (
             <Fabric>
-                <Window theme="light" chrome padding="12px">
-                    <TitleBar title="Outlook" />
+                <Window theme="light" chrome padding="12px" width={950} height={600}>
+                    {renderVoiceTitleBar(subject, 'Outlook', titleBarOptions)}
                     <div className="vc-nav-pane" style={{ width: '100%' }}>
                         <NavPane openLength={200} theme="light" defaultIsPaneExpanded={this.state.paneExpanded}>
                             <NavPaneItem
                                 title="New Mail"
                                 icon={
-                                    <VoiceNumber number={2}>
+                                    <VoiceNumber number={5}>
                                         <Icon iconName="CirclePlus" />
                                     </VoiceNumber>
                                 }
@@ -63,7 +69,7 @@ export default class MainMenu extends Component {
                             <NavPaneItem
                                 title="Inbox"
                                 icon={
-                                    <VoiceNumber number={3}>
+                                    <VoiceNumber number={6}>
                                         <Icon iconName="Mail" />
                                     </VoiceNumber>
                                 }
@@ -71,7 +77,7 @@ export default class MainMenu extends Component {
                                 onSelect={this.makeSelectNav(1)}
                                 padding="10px 20px"
                             >
-                                Something else
+                                {children}
                             </NavPaneItem>
                         </NavPane>
                     </div>

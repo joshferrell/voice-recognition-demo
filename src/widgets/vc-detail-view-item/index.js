@@ -1,3 +1,3 @@
-import VCMasterDetailsViewItem from './index';
+import renderDetailsViewItem from './index';
 
-export default VCMasterDetailsViewItem;
+export default renderDetailsViewItem;

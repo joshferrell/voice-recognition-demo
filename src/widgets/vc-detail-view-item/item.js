@@ -9,7 +9,7 @@ import {
 import { VoiceNumber } from '../.';
 import './item.css';
 
-const VCMasterDetailsViewItem = (itemComponent, itemView, number, subject) => {
+const renderDetailsViewItem = (itemComponent, itemView, number, subject) => {
     const uniqueId = `item-${uuid()}`;
     const eventListener = (event) => {
         if (event.includes(`click ${number}`)) {
@@ -19,7 +19,6 @@ const VCMasterDetailsViewItem = (itemComponent, itemView, number, subject) => {
             });
             const target = document.getElementById(uniqueId);
             target.dispatchEvent(evt);
-            // document.getElementById(uniqueId).dispatchEvent('click');
         }
     };
 
@@ -27,7 +26,7 @@ const VCMasterDetailsViewItem = (itemComponent, itemView, number, subject) => {
 
     return (
         <MasterDetailsViewItem>
-            <MasterDetailsViewItemMaster id={uniqueId} ref={(item) => { this.viewItem = item; }}>
+            <MasterDetailsViewItemMaster id={uniqueId}>
                 <VoiceNumber className="vc-detail-item" number={number} />
                 {itemComponent}
             </MasterDetailsViewItemMaster>
@@ -38,4 +37,4 @@ const VCMasterDetailsViewItem = (itemComponent, itemView, number, subject) => {
     );
 };
 
-export default VCMasterDetailsViewItem;
+export default renderDetailsViewItem;

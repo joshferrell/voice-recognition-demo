@@ -1,3 +1,3 @@
-import VoiceTitleBar from './titlebar';
+import renderVoiceTitleBar from './titlebar';
 
-export default VoiceTitleBar;
+export default renderVoiceTitleBar;
