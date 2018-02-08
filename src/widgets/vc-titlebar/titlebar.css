@@ -6,9 +6,10 @@
     color: white;
     background-color: rgba(32, 45, 74, .8);
     border-radius: 100%;
-    padding: 14px 9px 0;
+    padding: 14px 9px 2px;
     height: 11px;
     position: relative;
+    font-family: arial, helvetica, 'san-serif';
     top: -8px;
     float: right;
     right: -4px;

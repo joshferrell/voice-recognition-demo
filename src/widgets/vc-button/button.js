@@ -10,7 +10,6 @@ class VoiceButton extends Component {
 
     eventListener = (event) => {
         if (event.includes(`click ${this.props.number}`)) {
-            console.log(this.button);
             this.button.click();
         }
     }
