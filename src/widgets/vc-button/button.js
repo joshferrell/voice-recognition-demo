@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Button } from 'react-desktop/windows';
+import { VoiceNumber } from '../.';
 
 class VoiceButton extends Component {
     constructor(props) {
@@ -19,7 +20,11 @@ class VoiceButton extends Component {
         subject.subscribe(this.eventListener);
         return (
             <Fragment>
-                <Button {...props} onClick={onClick}>{children}</Button>
+                <VoiceNumber number={number}>
+                    <Button {...props} onClick={onClick}>
+                        {children}
+                    </Button>
+                </VoiceNumber>
                 <button
                     style={{ display: 'none' }}
                     onClick={onClick}

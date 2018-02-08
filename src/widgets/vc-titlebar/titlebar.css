@@ -1,0 +1,30 @@
+.vc-titlebar div {
+    color: #2b2b2b !important;
+}
+
+.vc-titlebar a:after {
+    color: white;
+    background-color: rgba(32, 45, 74, .8);
+    border-radius: 100%;
+    padding: 14px 9px 0;
+    height: 11px;
+    position: relative;
+    top: -8px;
+    float: right;
+    right: -4px;
+    font-size: .8rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+.vc-titlebar a[title="Minimize"]:after {
+    content: '1';
+}
+
+.vc-titlebar a[title="Maximize"]:after {
+    content: '2';
+}
+
+.vc-titlebar a[title="Close"]:after {
+    content: '3';
+}

@@ -1,0 +1,22 @@
+.vc-number-container {
+    display: inline-block;
+}
+
+.vc-number {
+    display: inline-block;
+    float: right;
+
+    position: relative;
+    right: 15px;
+    top: -10px;
+
+    color: white;
+    background-color: rgba(32, 45, 74, .8);
+
+    border-radius: 100%;
+    padding: 7px 9px 5px;
+
+    font-size: .8rem;
+    font-weight: bold;
+    text-align: center;
+}
