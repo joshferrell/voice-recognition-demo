@@ -1,8 +1,6 @@
-.vc-detail-item .vc-number {
-    padding: 12px 12px 9px;
-    height: 11px;
+.vc-detail-item .vc-number-container .vc-number {
     right: -7px;
-    top: -8px;
+    top: 5px;
     float: right;
 }
 

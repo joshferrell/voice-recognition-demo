@@ -1,4 +1,5 @@
 import React from 'react';
+import uuid from 'uuid/v4';
 import { Subject } from 'rxjs';
 import { MasterDetailsView } from 'react-desktop/windows';
 
@@ -24,6 +25,9 @@ storiesOf('Widget/Master Details View', module)
             subject$.next('click 2');
         }, 3000);
 
+        const id1 = `item-${uuid()}`;
+        const id2 = `item-${uuid()}`;
+
         const itemComponentOne = (<p>Item 1</p>);
         const itemViewOne = (<div>This is an example view</div>);
         const itemComponentTwo = (<p>Item 2</p>);
@@ -31,8 +35,8 @@ storiesOf('Widget/Master Details View', module)
 
         return (
             <MasterDetailsView theme="light">
-                {VCMasterDetailsViewItem(itemComponentOne, itemViewOne, 1, subject$)}
-                {VCMasterDetailsViewItem(itemComponentTwo, itemViewTwo, 2, subject$)}
+                {VCMasterDetailsViewItem(itemComponentOne, itemViewOne, 1, subject$, id1)}
+                {VCMasterDetailsViewItem(itemComponentTwo, itemViewTwo, 2, subject$, id2)}
             </MasterDetailsView>
         );
     }));

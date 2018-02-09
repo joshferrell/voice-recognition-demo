@@ -28,8 +28,8 @@
     height: 11px;
     position: relative;
     font-family: arial, helvetica, 'san-serif';
-    top: -4px;
-    right: -30px;
+    top: 0px;
+    right: -32px;
     font-size: .8rem;
     font-weight: bold;
     text-align: center;
@@ -37,4 +37,8 @@
 
 .vc-nav-pane > div > div:first-of-type > div:after {
     content: '4';
+}
+
+.vc-titlebar + div {
+    overflow-x: scroll;
 }

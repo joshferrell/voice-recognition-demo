@@ -1,22 +1,20 @@
 import React, { Component } from 'react';
 import { Fabric, Icon } from 'office-ui-fabric-react';
-import { Window, NavPane, NavPaneItem, TitleBar } from 'react-desktop/windows';
+import { Window, NavPane, NavPaneItem } from 'react-desktop/windows';
 import { renderVoiceTitleBar, VoiceNumber } from '../../widgets';
 import './main-menu.css';
 
 export default class MainMenu extends Component {
     constructor(props) {
         super(props);
-
-        this.navItems = Array(3);
         this.state = {
             selectedNav: 1,
             paneExpanded: false
         };
     }
 
-    makeEventListener = index => (event) => {
-        if (event.includes(`click ${index + 4}`)) {
+    eventListener = (index, event) => {
+        if (event.includes(`click ${index + 5}`)) {
             this.setState({ selectedNav: index });
         }
     }
@@ -38,8 +36,10 @@ export default class MainMenu extends Component {
     };
 
     render = () => {
-        const { subject, children } = this.props;
+        const { subject } = this.props;
         subject.subscribe(this.togglePane);
+        subject.subscribe(e => this.eventListener(0, e));
+        subject.subscribe(e => this.eventListener(1, e));
 
         const titleBarOptions = {
             color: '#fff',
@@ -47,9 +47,11 @@ export default class MainMenu extends Component {
             theme: 'dark'
         };
 
+        const children = React.Children.toArray(this.props.children);
+
         return (
             <Fabric>
-                <Window theme="light" chrome padding="12px" width={950} height={600}>
+                <Window theme="light" chrome width={950} height={600}>
                     {renderVoiceTitleBar(subject, 'Outlook', titleBarOptions)}
                     <div className="vc-nav-pane" style={{ width: '100%' }}>
                         <NavPane openLength={200} theme="light" defaultIsPaneExpanded={this.state.paneExpanded}>
@@ -62,9 +64,9 @@ export default class MainMenu extends Component {
                                 }
                                 selected={this.state.selectedNav === 0}
                                 onSelect={this.makeSelectNav(0)}
-                                padding="10px 20px"
+                                padding="0 20px"
                             >
-                                test
+                                {children[1]}
                             </NavPaneItem>
                             <NavPaneItem
                                 title="Inbox"
@@ -75,9 +77,9 @@ export default class MainMenu extends Component {
                                 }
                                 selected={this.state.selectedNav === 1}
                                 onSelect={this.makeSelectNav(1)}
-                                padding="10px 20px"
+                                padding="0 20px"
                             >
-                                {children}
+                                {children[0]}
                             </NavPaneItem>
                         </NavPane>
                     </div>

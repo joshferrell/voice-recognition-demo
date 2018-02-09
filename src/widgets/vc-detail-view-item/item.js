@@ -1,5 +1,4 @@
 import React from 'react';
-import uuid from 'uuid/v4';
 import {
     MasterDetailsViewItem,
     MasterDetailsViewItemMaster,
@@ -8,16 +7,17 @@ import {
 import { VoiceNumber } from '../.';
 import './item.css';
 
-const renderDetailsViewItem = (itemComponent, itemView, number, subject) => {
-    const uniqueId = `item-${uuid()}`;
+const renderDetailsViewItem = (itemComponent, itemView, number, subject, uniqueId) => {
     const eventListener = (event) => {
         if (event.includes(`click ${number}`)) {
             const evt = new MouseEvent('click', {
-                view: window,
                 bubbles: true
             });
             const target = document.getElementById(uniqueId);
-            target.dispatchEvent(evt);
+            console.log(target);
+            if (target) {
+                target.click();
+            }
         }
     };
 

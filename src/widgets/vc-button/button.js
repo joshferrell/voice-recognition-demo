@@ -10,12 +10,13 @@ class VoiceButton extends Component {
 
     eventListener = (event) => {
         if (event.includes(`click ${this.props.number}`)) {
-            this.button.click();
+            const target = document.getElementById(this.props.id);
+            if (target) target.click();
         }
     }
 
     render = () => {
-        const { onClick, number, subject, children, ...props } = this.props;
+        const { onClick, number, subject, children, id, ...props } = this.props;
         subject.subscribe(this.eventListener);
         return (
             <Fragment>
@@ -25,9 +26,9 @@ class VoiceButton extends Component {
                     </Button>
                 </VoiceNumber>
                 <button
+                    id={id}
                     style={{ display: 'none' }}
                     onClick={onClick}
-                    ref={(button) => { this.button = button; }}
                 ></button>
             </Fragment>
         )

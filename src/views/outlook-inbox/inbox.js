@@ -1,11 +1,7 @@
 import React, { Component } from 'react';
+import uuid from 'uuid/v4';
 import { Persona } from 'office-ui-fabric-react';
-import {
-    MasterDetailsView,
-    MasterDetailsViewItem,
-    MasterDetailsViewItemMaster,
-    MasterDetailsViewItemDetails
-} from 'react-desktop/windows';
+import { MasterDetailsView } from 'react-desktop/windows';
 import renderDetailsViewItem from '../../widgets/vc-detail-view-item/';
 
 import './inbox.css';
@@ -47,10 +43,8 @@ export default class Inbox extends Component {
     constructor(props) {
         super(props);
 
-        this.state = {
-            emails,
-            selectedEmail: 0
-        };
+        this.state = { emails };
+        this.navIds = Array(emails.length).fill(0).map(() => `item-${uuid()}`);
     }
 
     renderEmail = ({ user, subject, shortMessage }) => (
@@ -86,7 +80,8 @@ export default class Inbox extends Component {
                     this.renderEmail(email),
                     this.renderView(email),
                     index + this.props.baseNumber,
-                    this.props.subject
+                    this.props.subject,
+                    this.navIds[index]
                 ))}
             </MasterDetailsView>
         );

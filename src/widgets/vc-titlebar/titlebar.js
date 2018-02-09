@@ -2,12 +2,6 @@ import React from 'react';
 import { TitleBar } from 'react-desktop/windows';
 import './titlebar.css';
 
-const makeEventListener = index => (event) => {
-    if (event.includes(`click ${index + 1}`)) {
-        this.buttons[index].click();
-    }
-};
-
 const renderVoiceTitleBar = (
     subject,
     title,
@@ -17,6 +11,13 @@ const renderVoiceTitleBar = (
     onMaximizeClick
 ) => {
     const buttons = Array(3);
+
+    const makeEventListener = index => (event) => {
+        if (event.includes(`click ${index + 1}`)) {
+            console.log(`clicking ${index + 1}`);
+            if (buttons[index]) buttons[index].click();
+        }
+    };
 
     const hiddenButton = (index, action) => (
         <button

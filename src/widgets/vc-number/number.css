@@ -5,6 +5,7 @@
 .vc-number-container .vc-number {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     font-family: arial, helvetica, 'sans-serif';
     float: right;
 
@@ -12,11 +13,14 @@
     right: 15px;
     top: -10px;
 
+    width: 25px;
+    height: 25px;
+
     color: white !important;
     background-color: rgba(32, 45, 74, .8);
 
     border-radius: 100%;
-    padding: 7px 9px;
+    padding: 0;
 
     font-size: .8rem;
     font-weight: bold;
