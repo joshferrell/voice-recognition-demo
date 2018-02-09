@@ -6,7 +6,7 @@ import {
     MasterDetailsViewItemMaster,
     MasterDetailsViewItemDetails
 } from 'react-desktop/windows';
-// import renderDetailsViewItem from '../../widgets/vc-detail-view-item/';
+import renderDetailsViewItem from '../../widgets/vc-detail-view-item/';
 
 import './inbox.css';
 
@@ -27,18 +27,18 @@ const emails = [
     },
     {
         subject: 'Distance yourself from pain',
-        message: `
-            Voice Computer provides the intuitive alternative that
-            keeps you productive
-        `,
+        shortMessage: 'Voice Computer provides the intuitive alternative that keeps you productive',
+        message: (
+            <p>Something</p>
+        ),
         user: voiceUser
     },
     {
         subject: 'Want to learn more?',
-        message: `
-            Subscribe to our free newsletter for more on speech
-            recognition technology and accessibility
-        `,
+        shortMessage: 'Subscribe to our free newsletter for more on speech recognition technology and accessibility',
+        message: (
+            <p>lorem ipsum</p>
+        ),
         user: voiceUser
     }
 ];
@@ -82,14 +82,12 @@ export default class Inbox extends Component {
     render = () => {
         return (
             <MasterDetailsView>
-                <MasterDetailsViewItem>
-                    <MasterDetailsViewItemMaster>
-                        {this.renderEmail(emails[0])}
-                    </MasterDetailsViewItemMaster>
-                    <MasterDetailsViewItemDetails>
-                        {this.renderView(emails[0])}
-                    </MasterDetailsViewItemDetails>
-                </MasterDetailsViewItem>
+                {this.state.emails.map((email, index) => renderDetailsViewItem(
+                    this.renderEmail(email),
+                    this.renderView(email),
+                    index + this.props.baseNumber,
+                    this.props.subject
+                ))}
             </MasterDetailsView>
         );
     }

@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
 import uuid from 'uuid/v4';
 import {
     MasterDetailsViewItem,
@@ -26,8 +25,8 @@ const renderDetailsViewItem = (itemComponent, itemView, number, subject) => {
 
     return (
         <MasterDetailsViewItem>
-            <MasterDetailsViewItemMaster id={uniqueId}>
-                <VoiceNumber className="vc-detail-item" number={number} />
+            <MasterDetailsViewItemMaster id={uniqueId} className="vc-detail-item">
+                <VoiceNumber number={number} />
                 {itemComponent}
             </MasterDetailsViewItemMaster>
             <MasterDetailsViewItemDetails>

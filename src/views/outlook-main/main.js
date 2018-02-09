@@ -6,7 +6,7 @@ const Main = () => {
 
     return (
         <Menu subject={subject}>
-            <InboxView />
+            <InboxView baseNumber={8} subject={subject} />
         </Menu>
     );
 };

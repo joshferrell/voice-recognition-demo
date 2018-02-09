@@ -2,9 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './number.css';
 
-const VoiceNumber = ({ number, children, ...props }) => (
+const VoiceNumber = ({
+    number,
+    children,
+    className,
+    ...props
+}) => (
     <div
-        className="vc-number-container"
+        className={[className, 'vc-number-container'].join(' ')}
         {...props}
     >
         {children && children}
@@ -17,11 +22,13 @@ const VoiceNumber = ({ number, children, ...props }) => (
 
 VoiceNumber.propTypes = {
     children: PropTypes.node,
+    className: PropTypes.string,
     number: PropTypes.string.isRequired
 };
 
 VoiceNumber.defaultProps = {
-    children: null
+    children: null,
+    className: ''
 };
 
 export default VoiceNumber;

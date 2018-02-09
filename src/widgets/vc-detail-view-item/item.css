@@ -3,4 +3,10 @@
     height: 11px;
     right: -7px;
     top: -8px;
+    float: right;
+}
+
+
+.vc-detail-item .vc-number-container {
+    float: right;
 }

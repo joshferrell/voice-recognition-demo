@@ -1,3 +1,3 @@
-import renderDetailsViewItem from './index';
+import renderDetailsViewItem from './item';
 
 export default renderDetailsViewItem;
