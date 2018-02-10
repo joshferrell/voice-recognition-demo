@@ -5,3 +5,4 @@ export { default as renderDetailsViewItem } from './vc-detail-view-item';
 export { default as MicrophoneButton } from './microphone-button';
 export { default as VoiceInput } from './voice-input';
 export { default as VoiceHistory } from './voice-history';
+export { default as VoiceControl } from './voice-control';
