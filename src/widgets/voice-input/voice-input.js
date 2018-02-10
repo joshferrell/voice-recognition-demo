@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import recognizeMic from 'watson-speech/speech-to-text/recognize-microphone';
+import wordsToNumbers from 'words-to-numbers';
 import { TeachingBubble } from 'office-ui-fabric-react';
 import { requestToken, makeHandleStreamUpdate } from '../../action';
 import { RightArrow } from '../../media';
@@ -12,20 +13,58 @@ export default class VoiceInput extends Component {
 
         this.state = {
             isListening: false,
-            isMicrophoneHelpVisible: false
+            isMicrophoneHelpVisible: false,
+            voiceText: ''
         };
+
+        const { subject } = this.props;
+        subject.subscribe(() => {
+            this.setState({
+                voiceText: ''
+            });
+        });
     }
 
     componentDidMount = async () => {
         this.token = await requestToken();
     }
 
+    setStreamEvents = () => {
+        const { subject } = this.props;
+        const handleStreamUpdate = makeHandleStreamUpdate(
+            subject,
+            this.stream
+        );
+
+        this.stream.on('data', (data) => {
+            const res = handleStreamUpdate(data);
+            if (res === 'stopping-voice-1234') {
+                this.setState({
+                    isListening: false,
+                    isMicrophoneHelpVisible: false,
+                    voiceText: ''
+                });
+            } else {
+                this.setState({
+                    voiceText: res
+                });
+            }
+        });
+        this.stream.on('error', (err) => {
+            console.log(err);
+        });
+    }
+
     toggleListening = () => {
         const { isListening } = this.state;
-        const { subject } = this.props;
+        this.setState({ isListening: !isListening });
 
         if (this.state.isListening) {
             this.setState({ isMicrophoneHelpVisible: false });
+        } else {
+            setTimeout(() => {
+                this.setState({ isMicrophoneHelpVisible: true });
+            }, 2500);
 
             this.stream = recognizeMic({
                 token: this.token,
@@ -34,22 +73,22 @@ export default class VoiceInput extends Component {
                 format: true
             });
 
-            const handleStreamUpdate = makeHandleStreamUpdate(
-                subject,
-                this.stream
-            );
-
-            this.stream.on('data', handleStreamUpdate);
-            this.stream.on('error', (err) => {
-                console.log(err);
-            });
-        } else {
-            setTimeout(() => {
-                this.setState({ isMicrophoneHelpVisible: true })
-            }, 2500);
+            this.setStreamEvents();
         }
+    }
 
-        this.setState({ isListening: !isListening });
+    handleInputChange = (e) => {
+        this.setState({
+            voiceText: e.target.value
+        });
+    }
+
+    handleInputSubmit = (e) => {
+        e.preventDefault();
+        const { voiceText } = this.state;
+        const { subject } = this.props;
+        const formattedText = wordsToNumbers(voiceText);
+        subject.next(formattedText);
     }
 
     dismissMicrophone = () => {
@@ -60,15 +99,21 @@ export default class VoiceInput extends Component {
 
     render = () => (
         <div className="voice-input-controls">
-            <div className="text-controls">
+            <form className="text-controls" onSubmit={this.handleInputSubmit}>
                 <label htmlFor="textControl" style={{ display: 'none' }}>
                     Voice Input
                 </label>
-                <input id="textControl" type="text" placeholder="click one" />
+                <input
+                    id="textControl"
+                    type="text"
+                    placeholder="click one"
+                    value={this.state.voiceText}
+                    onChange={this.handleInputChange}
+                />
                 <button className="text-control-submit" type="submit">
                     <img className="submit-arrow" src={RightArrow} alt="submit text" />
                 </button>
-            </div>
+            </form>
             <div className="voice-controls">
                 <MicrophoneButton
                     isListening={this.state.isListening}

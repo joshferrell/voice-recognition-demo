@@ -1,0 +1,14 @@
+.voice-control {
+    background-color: #fafafa;
+    width: 350px;
+    height: 600px;
+
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-end;
+}
+
+.voice-control .input-history {
+    padding: 16px;
+    background-color: #fafafa;
+}

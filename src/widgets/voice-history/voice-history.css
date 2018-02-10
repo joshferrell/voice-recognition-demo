@@ -1,0 +1,9 @@
+.voice-history {
+    display: flex;
+    flex-flow: column-reverse;
+
+    overflow-y: hidden;
+    
+    padding: 16px;
+    background-color: #fafafa;
+}

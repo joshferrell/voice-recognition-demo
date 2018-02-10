@@ -33,6 +33,7 @@
 
 #wave {
     width: 38px;
+    height: auto;
 }
 
 .microphone-button svg .nc-icon-wrapper {
