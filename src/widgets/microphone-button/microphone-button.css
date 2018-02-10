@@ -1,0 +1,45 @@
+.microphone-button {
+    height: 50px;
+    width: 50px;
+    padding: 12px;
+    color: white;
+    border: none;
+    border-radius: 100%;
+    background-color: #202d4a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all .15s ease;
+    box-shadow: 0 4px 6px rgba(50,50,93,.11),0 1px 3px rgba(0,0,0,.08)
+}
+
+.microphone-button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 7px 14px rgba(50,50,93,.1),0 3px 6px rgba(0,0,0,.08);
+}
+
+.microphone-button:active {
+    transform: translateY(1px);
+    box-shadow: 0 4px 6px rgba(50,50,93,.11),0 1px 3px rgba(0,0,0,.08);
+}
+
+.microphone-button.listening {
+    background-color: #e74c3c;
+}
+
+.microphone-button > svg {
+    height: 27px;
+}
+
+#wave {
+    width: 38px;
+}
+
+.microphone-button svg .nc-icon-wrapper {
+    fill: white;
+}
+
+.microphone-button svg .nc-icon-wrapper * {
+    stroke: white;
+    stroke-width: 4px;
+}

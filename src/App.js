@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { Subject } from 'rxjs';
+import { demoBackground } from './media';
 import recognizeMic from 'watson-speech/speech-to-text/recognize-microphone'
-import { Outlook } from './views';
+import { Outlook, VoiceControl } from './views';
+import './app.css';
 
 class App extends Component {
     constructor() {
@@ -65,10 +67,26 @@ class App extends Component {
     }
 
     renderApp = () => (
-        <div>
-            <p>{this.state.text}</p>
-            <button onClick={this.onListenClick}>Start Microphone</button>
-            <Outlook subject={this.subject$} />
+        <div
+            className="app-container"
+            style={{
+                background: `
+                    linear-gradient(
+                        rgba(0, 0, 0, 0.15),
+                        rgba(0, 0, 0, 0.15)
+                    ),
+                    url('http://i.imgur.com/asdDG.jpg')
+                    no-repeat center/cover
+                `
+            }}
+        >
+            {/* <p>{this.state.text}</p>
+            <button onClick={this.onListenClick}>Start Microphone</button> */}
+            <div style={{ display: 'flex' }}>
+                <Outlook subject={this.subject$} />
+                <VoiceControl />
+            </div>
+
         </div>
     )
 

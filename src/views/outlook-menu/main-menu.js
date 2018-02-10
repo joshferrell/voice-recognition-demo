@@ -51,7 +51,7 @@ export default class MainMenu extends Component {
 
         return (
             <Fabric>
-                <Window theme="light" chrome width={950} height={600}>
+                <Window theme="light" chrome width={950} height={600} className="outlook-window">
                     {renderVoiceTitleBar(subject, 'Outlook', titleBarOptions)}
                     <div className="vc-nav-pane" style={{ width: '100%' }}>
                         <NavPane openLength={200} theme="light" defaultIsPaneExpanded={this.state.paneExpanded}>

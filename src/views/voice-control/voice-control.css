@@ -1,0 +1,57 @@
+.voice-control {
+    background-color: #fafafa;
+    width: 350px;
+    height: 600px;
+
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-end;
+}
+
+.voice-control .input-history {
+    padding: 16px;
+    background-color: #fafafa;
+}
+
+.voice-control .input-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+    background-color: rgba(32,45,74,.075);
+}
+
+#voiceControl {
+    padding: 8px;
+    padding-right: 0;
+    font-size: .9rem;
+    border: none;
+    flex: 1;
+}
+
+.voice-control .input-controls .text-controls {
+    border: 1px solid #b6b6b6;
+    display: inline-flex;
+    align-content: center;
+    justify-content: flex-start;
+    flex: 2;
+    margin-right: 16px;
+}
+
+.voice-control .input-controls button img {
+    height: 18px;
+}
+
+.voice-control .input-controls .text-controls button {
+    display: flex;
+    align-items: center;
+    border: 0;
+    padding: 0 15px;
+    background-color: white;
+    transition: all .15s ease;
+}
+
+.voice-control .input-controls .text-controls button:active img {
+    height: 16px;
+    padding: 1px;
+}

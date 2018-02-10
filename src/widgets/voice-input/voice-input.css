@@ -1,0 +1,49 @@
+button img.submit-arrow {
+    height: 18px;
+}
+
+button:active img.submit-arrow {
+    height: 16px;
+    padding: 1px;
+}
+
+.voice-input-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 16px;
+    background-color: #E9EAEC;
+}
+
+#textControl {
+    flex: 1;
+
+    border: none;
+    padding: 8px;
+    padding-right: 0;
+
+    font-size: .9rem;
+}
+
+.voice-input-controls .text-controls {
+    display: inline-flex;
+    align-content: center;
+    flex: 2;
+    justify-content: flex-start;
+
+    border: 1px solid #b6b6b6;
+    margin-right: 16px;
+}
+
+.voice-input-controls .text-controls .text-control-submit {
+    display: flex;
+    align-items: center;
+
+    border: 0;
+    padding: 0 15px;
+
+    background-color: white;
+
+    transition: all .15s ease;
+}

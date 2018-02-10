@@ -1,3 +1,7 @@
+.outlook-window {
+    box-shadow: none !important;
+}
+
 .vc-nav-pane div {
     color: #2b2b2b !important;
 }

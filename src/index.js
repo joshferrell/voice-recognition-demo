@@ -1,13 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Fabric } from 'office-ui-fabric-react';
+import { initializeIcons } from '@uifabric/icons';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
-import { initializeIcons } from '@uifabric/icons';
+
 
 initializeIcons();
 
 ReactDOM.render(
-    <App />,
+    <Fabric>
+        <App />
+    </Fabric>,
     document.getElementById('root')
 );
 registerServiceWorker();
