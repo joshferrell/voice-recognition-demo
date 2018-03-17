@@ -24,6 +24,10 @@
     padding-top: 5px;
 }
 
+.vc-nav-pane > div > div:first-of-type > svg {
+    pointer-events: all !important;
+}
+
 .vc-nav-pane > div > div:first-of-type > div:after {
     color: white;
     background-color: rgba(32, 45, 74, .8);

@@ -1,0 +1,68 @@
+.join-cta {
+    font-family: 'Poppins', helvetica, arial, 'sans-serif';
+    line-height: 1.4rem;
+    font-size: 1.3rem;
+    color: #4d586f;
+    padding: 24px;
+    padding-bottom: 0;
+    background-color: rgba(0,0,0,.02);
+}
+
+.join-cta h4 {
+    margin: 0 0 16px;
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #2b2b2b;
+    line-height: 2.8rem;
+}
+
+.join-cta .actions {
+    padding-top: 24px;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: flex-end;
+    padding-bottom: 24px;
+}
+
+.join-cta a {
+    color: #fff;
+    padding: 16px 32px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all .1s linear;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: center;
+    border: None;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+}
+
+.join-cta .actions a svg {
+    margin-left: 8px;
+}
+
+.join-cta .actions a svg g * {
+    stroke: #afbfff;
+    stroke-width: 2px;
+}
+
+.join-cta .actions a:first-of-type {
+    background-color: #202d4a;
+    margin-right: 16px;
+}
+
+.join-cta .actions a:first-of-type:hover {
+    background-color: #4d586f;
+}
+
+.join-cta .actions a:last-of-type {
+    background-color: #009688;
+}
+
+.join-cta .actions a:last-of-type:hover {
+    background-color: #26a69a;
+}

@@ -17,6 +17,13 @@ export default class VoiceInput extends Component {
             voiceText: ''
         };
 
+        this.speechRecognition = (
+            window.SpeechRecognition ||
+            window.webkitSpeechRecognition ||
+            window.mozSpeechRecognition ||
+            window.msSpeechRecognition
+        );
+
         const { subject } = this.props;
         subject.subscribe(() => {
             this.setState({
@@ -29,12 +36,21 @@ export default class VoiceInput extends Component {
         this.token = await requestToken();
     }
 
-    setStreamEvents = () => {
+    setNativeStreamEvents = () => {
+        const { subject } = this.props;
+        
+    }
+
+    setWatsonStreamEvents = () => {
         const { subject } = this.props;
         const handleStreamUpdate = makeHandleStreamUpdate(
             subject,
             this.stream
         );
+
+        setTimeout(() => {
+            this.stream.stop();
+        }, 5000 * 60);
 
         this.stream.on('data', (data) => {
             const res = handleStreamUpdate(data);
@@ -55,6 +71,17 @@ export default class VoiceInput extends Component {
         });
     }
 
+    watsonMicrophone = () => {
+        this.stream = recognizeMic({
+            token: this.token,
+            objectMode: true,
+            extractResults: true,
+            format: true
+        });
+
+        this.setWatsonStreamEvents();
+    }
+
     toggleListening = () => {
         const { isListening } = this.state;
         this.setState({ isListening: !isListening });
@@ -64,16 +91,18 @@ export default class VoiceInput extends Component {
         } else {
             setTimeout(() => {
                 this.setState({ isMicrophoneHelpVisible: true });
-            }, 2500);
+            }, 5000);
 
-            this.stream = recognizeMic({
-                token: this.token,
-                objectMode: true,
-                extractResults: true,
-                format: true
-            });
-
-            this.setStreamEvents();
+            if (
+                window.SpeechRecognition ||
+                window.webkitSpeechRecognition ||
+                window.mozSpeechRecognition ||
+                window.msSpeechRecognition
+            ) {
+                console.log('using browser recognition');
+            } else {
+                this.watsonMicrophone();
+            }
         }
     }
 
